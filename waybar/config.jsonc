@@ -25,6 +25,7 @@
     "tray",
     "backlight",
     "pulseaudio",
+    "pulseaudio#microphone",
     "battery"
   ],
 
@@ -119,11 +120,28 @@
     "max-volume": 150,
     "format": "{icon} {volume}%",
     "format-bluetooth": "{icon} {volume}%",
-    "format-icons": ["", "", " "],
+    "format-icons": {
+	    "headphone": "",
+	    "default": ["", "", " "]
+    },
     "nospacing": 1,
     "format-muted": " ",
-    "on-click": "pavucontrol",
+    "on-click": "pavucontrol -t 3",
+    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
     "tooltip": false
+  },
+
+  "pulseaudio#microphone":{
+	  "max-volume": 150,
+	  "format": "{format_source}",
+	  "format-source": "",
+	  "format-source-muted": "",
+	  "on-click": "pavucontrol -t 4",
+	  "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+	  "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SOURCE@ 5%+",
+	  "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-",
+	  "tooltip": false
+
   },
 
   "battery": {
