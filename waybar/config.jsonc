@@ -56,8 +56,6 @@
         "(.*) — Mozilla Firefox": "󰈹  $1",
         "(.*) - Thorium": "  $1",
         "(.*) - Visual Studio Code": "󰨞  $1",
-        "(.*) - nvim": "  $1",
-        "(.*) - ~": "  $1",
         "nwg-look": "  GTK Settings",
         "Qt6 Configuration Tool": "  QT Settings",
         "blueman-manager": "Bluetooth Settings"
@@ -104,7 +102,7 @@
         }
       }
   },
- 
+
       "backlight": {
       "format": "{icon} <b>{percent}%</b>",
       "format-icons": [
