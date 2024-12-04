@@ -24,38 +24,38 @@
         {
             "type": "os",
             "key": " ",
-            "keyColor": "33",  // = color3
+            "keyColor": "13",  // = color3
         },
         {
             "type": "kernel",
             "key": " ",
-            "keyColor": "33",
+            "keyColor": "13",
         },
         {
             "type": "packages",
             "format": "{} (pacman)",
             "key": " ",
-            "keyColor": "33",  
+            "keyColor": "13",
         },
         {
             "type": "shell",
             "key": " ",
-            "keyColor": "33", 
+            "keyColor": "13",
         },
         {
             "type": "terminal",
             "key": " ",
-            "keyColor": "33", 
+            "keyColor": "13",
         },
         {
             "type": "wm",
             "key": " ",
-            "keyColor": "33", 
+            "keyColor": "13",
         },
         {
             "type": "uptime",
             "key": " ",
-            "keyColor": "33", 
+            "keyColor": "13",
         },
         "break",
         "colors",

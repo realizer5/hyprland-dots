@@ -41,12 +41,10 @@
       "title-len": 20,
       "player-icons": {
         "default": "▶",
-        "mpv": "",
         "spotify": "󰓇"
       },
       "status-icons": {
         "paused": "",
-        "stopped": ""
       }
   },
       "hyprland/window": {
