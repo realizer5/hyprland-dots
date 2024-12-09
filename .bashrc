@@ -5,14 +5,8 @@ if [ -f /usr/bin/fastfetch ]; then
 	fastfetch --colors-block-range-start 9 --colors-block-width 3
 fi
 
-# Source global definitions
-if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
-fi
-
-# Enable bash programmable completion features in interactive shells
-if [ -f /usr/share/bash-completion/bash_completion ]; then
-	. /usr/share/bash-completion/bash_completion
+if [ -f /etc/bash.bashrc ]; then
+	. /etc/bash.bashrc
 fi
 
 #######################################################
@@ -27,7 +21,7 @@ export HISTSIZE=500
 export HISTTIMEFORMAT="%F %T" # add timestamp to history
 
 # Don't put duplicate lines in the history and do not add lines that start with a space
-export HISTCONTROL=erasedups:ignoredups:ignorespace
+export HISTCONTROL="erasedups:ignoredups:ignorespace"
 
 # Check the window size after each command and, if necessary, update the values of LINES and COLUMNS
 shopt -s checkwinsize
@@ -63,6 +57,13 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 #######################################################
 # GENERAL ALIAS'S
 #######################################################
+#pacman alias
+alias pacin='sudo pacman -S'
+alias pacun='sudo pacman -Rns'
+alias pacup='sudo pacman -Syu'
+alias paccl='sudo pacman -Sc'
+alias pacs='pacman -Ss | grep'
+alias pacls='pacman -Q | grep'
 
 # Alias's to modified commands
 alias cp='cp -i'
@@ -85,6 +86,11 @@ alias rmd='/bin/rm  --recursive --force --verbose '
 # Search command line history
 alias h="history | grep "
 
+# Search files in the current folder
+alias f="find . | grep "
+#######################################################
+# SPECIAL FUNCTIONS
+#######################################################
 # Copy file with a progress bar
 cpp() {
     set -e
@@ -115,6 +121,57 @@ lazyg() {
 	git add .
 	git commit -m "$1"
 	git push
+}
+
+extract() {
+	for archive in "$@"; do
+		if [ -f "$archive" ]; then
+			case $archive in
+			*.tar.bz2) tar xvjf $archive ;;
+			*.tar.gz) tar xvzf $archive ;;
+			*.bz2) bunzip2 $archive ;;
+			*.rar) rar x $archive ;;
+			*.gz) gunzip $archive ;;
+			*.tar) tar xvf $archive ;;
+			*.tbz2) tar xvjf $archive ;;
+			*.tgz) tar xvzf $archive ;;
+			*.zip) unzip $archive ;;
+			*.Z) uncompress $archive ;;
+			*.7z) 7z x $archive ;;
+			*.tar.xz) tar xf $archive ;;
+			*) echo "don't know how to extract '$archive'..." ;;
+			esac
+		else
+			echo "'$archive' is not a valid file!"
+		fi
+	done
+}
+
+cpg() {
+	if [ -d "$2" ]; then
+		cp "$1" "$2" && cd "$2"
+	else
+		cp "$1" "$2"
+	fi
+}
+
+# Move and go to the directory
+mvg() {
+	if [ -d "$2" ]; then
+		mv "$1" "$2" && cd "$2"
+	else
+		mv "$1" "$2"
+	fi
+}
+
+# Automatically do an ls after each cd, z, or zoxide
+cd ()
+{
+	if [ -n "$1" ]; then
+		builtin cd "$@" && ls
+	else
+		builtin cd ~ && ls
+	fi
 }
 
 # Check if the shell is interactive
