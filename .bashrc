@@ -200,6 +200,9 @@ react(){
         bun add "$@";
     fi
     rm ./public ./src/assets ./src/App.css
+    sed -i '1,4d;7d;11,30d' ./src/App.jsx
+    else
+    echo "Please provide a Name for Project"
     fi
 }
 
