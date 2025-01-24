@@ -10,6 +10,7 @@ $git_status\
 [](fg:#4C566A bg:#4890b7)\
 $c\
 $nodejs\
+$bun\
 $rust\
 [](fg:#4890b7 bg:#06969A)\
 $docker_context\
@@ -70,13 +71,19 @@ format = '[$all_status$ahead_behind ]($style)'
 symbol = ""
 style = "bg:#4890b7"
 format = '[ $symbol ($version) ]($style)'
+detect_files = ['!bunfig.toml', '!bun.lockb']
+
+[bun]
+symbol= ""
+style = "bg:#4890b7"
+format = '[ $symbol ($version) ]($style)'
 
 [python]
 style = "bg:#3B4252"
 format = '[(\($virtualenv\) )]($style)'
 
 [rust]
-symbol = ""
+symbol = ""
 style = "bg:#4890b7"
 format = '[ $symbol ($version) ]($style)'
 

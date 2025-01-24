@@ -66,6 +66,9 @@ alias pacs='pacman -Ss | grep'
 alias pacls='pacman -Q | grep'
 alias pacorph='sudo pacman -Qdtq | sudo pacman -Rns -'
 
+#make pkg and clean it's make dependencie
+alias makepkg='makepkg -sirc'
+
 #wallpaper change
 alias wall='~/.local/share/bin/chwal.sh'
 
@@ -184,13 +187,20 @@ cd ()
 #personal
 
 react(){
-    pnpm create vite "$1" --template react;
+    if [ "$#" -gt 0 ]; then
+    bun create vite "$1" --template react;
     cd "$1";
-    pnpm i;
-    pnpm i -D tailwindcss postcss autoprefixer;
-    pnpx tailwindcss init -p;
-    sed -i 's|content: \[\],|content: [\n"./index.html",\n"./src/**/*.{js,ts,jsx,tsx}",\n],|g' "./tailwind.config.js"
-    echo -e  "@tailwind base;\n@tailwind components;\n@tailwind utilities;" > "./src/index.css"
+    bun i;
+    bun add tailwindcss @tailwindcss/vite;
+    sed -i '3i import tailwindcss from "@tailwindcss/vite"' "./vite.config.js";
+    sed -i 's/plugins: \[react()\]/plugins: \[react(), tailwindcss()\]/' "./vite.config.js"
+    echo '@import "tailwindcss";' > "./src/index.css"
+    shift
+    if [ "$#" -gt 0 ]; then
+        bun add "$@";
+    fi
+    rm ./public ./src/assets ./src/App.css
+    fi
 }
 
 # Check if the shell is interactive
@@ -204,3 +214,7 @@ export PATH=$PATH:"$HOME/.cargo/bin"
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
 . "$HOME/.cargo/env"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
