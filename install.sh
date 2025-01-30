@@ -4,7 +4,7 @@ echo "Welcome to HyprArch"
 echo "Installing necessary packages, fonts, and utilities..."
 
 # Install essential packages
-sudo pacman -S --noconfirm --needed hyprland xdg-desktop-portal-hyprland dkms reflector rofi dunst fastfetch waybar gdisk xorg-xhost git gnome-polkit vlc sddm network-manager network-manager-applet
+sudo pacman -S --noconfirm --needed hyprland xdg-desktop-portal-hyprland dkms reflector rofi dunst fastfetch waybar gdisk xorg-xhost git polkit-gnome vlc sddm networkmanager network-manager-applet
 
 # Prompt for LTS Kernel Installation
 read -p "Do you want LTS kernels? (y/N): " choice
