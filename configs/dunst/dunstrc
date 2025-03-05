@@ -18,8 +18,8 @@ frame_color = "#232323"
 gap_size = 2
 font = JetBrainsMono Nerd Font 8
 format = "%a\n<b>%s\n<span foreground='#f3f4f5'>%b</span></b>"
-icon_path = "/home/realizer/.icons/Tela-black-dark/16x16/actions:/home/realizer/.icons/Tela-black-dark/16x16/apps:/home/realizer/.icons/Tela-black-dark/16x16/devices:/home/realizer/.icons/Tela-black-dark/16x16/mimetypes:/home/realizer/.icons/Tela-black-dark/16x16/panel:/home/realizer/.icons/Tela-black-dark/16x16/places:/home/realizer/.icons/Tela-black-dark/16x16/status"
-icon_theme = "Tela-black-dark"
+icon_path = "/home/realizer/.icons/WhiteSur-dark/16x16/actions:/home/realizer/.icons/WhiteSur-dark/16x16/apps:/home/realizer/.icons/WhiteSur-dark/16x16/devices:/home/realizer/.icons/WhiteSur-dark/16x16/mimetypes:/home/realizer/.icons/WhiteSur-dark/16x16/panel:/home/realizer/.icons/WhiteSur-dark/16x16/places:/home/realizer/.icons/WhiteSur-dark/16x16/status"
+icon_theme = "WhiteSur-dark"
 dmenu = "/usr/bin/rofi -dmenu -p dunst:"
 corner_radius = 4
 mouse_left_click="do_action, close_current"

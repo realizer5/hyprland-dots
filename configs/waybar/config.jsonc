@@ -41,22 +41,25 @@
       "title-len": 20,
       "player-icons": {
         "default": "▶",
-        "spotify": "󰓇"
+        "spotify": "󰓇",
+        "mpv": "",
       },
       "status-icons": {
         "paused": "",
-      }
+      },
   },
       "hyprland/window": {
       "format": "{title}",
       "separate-outputs": true,
       "rewrite": {
-        "(.*) — Mozilla Firefox": "󰈹  $1",
+        "(.*) — Mozilla Firefox": "󰈹 $1",
+        "vim (.*)": " $1",
         "(.*) - Thorium": "  $1",
         "(.*) - Visual Studio Code": "󰨞  $1",
         "nwg-look": "  GTK Settings",
         "Qt6 Configuration Tool": "  QT Settings",
         "blueman-manager": "Bluetooth Settings",
+        "(.*) Discord (.*)": "  $1 $2",
       }
     },
     "cpu": {
@@ -83,7 +86,7 @@
   "tray": {
     "spacing": 10,
     "tooltip": false,
-    "icon-size": 15
+    "icon-size": 15,
   },
 
   "clock": {
@@ -122,7 +125,7 @@
     },
     "nospacing": 1,
     "format-muted": " ",
-    "on-click": "pavucontrol -t 3",
+    "on-click": "killall pavucontrol || pavucontrol -t 3",
     "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
     "tooltip": false
   },
@@ -132,7 +135,7 @@
 	  "format": "{format_source}",
 	  "format-source": "",
 	  "format-source-muted": "",
-	  "on-click": "pavucontrol -t 4",
+	  "on-click": "killall pavucontrol || pavucontrol -t 4",
 	  "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
 	  "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SOURCE@ 5%+",
 	  "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-",

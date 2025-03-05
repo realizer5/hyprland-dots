@@ -19,6 +19,7 @@ window#waybar {
 
 #workspaces button {
     color: #585b70;
+    border: none;
 }
 
 #workspaces button:not(:first-child) {
