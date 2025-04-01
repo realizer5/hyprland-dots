@@ -3,7 +3,7 @@ configuration {
 	modi:                       "drun,filebrowser";
     show-icons:                 true;
     display-drun:               " ";
-    display-filebrowser:         "";
+    display-filebrowser:         " ";
 	drun-display-format:        "{name}";
     filebrowser{
         command:                "wl-copy";

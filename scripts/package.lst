@@ -9,7 +9,6 @@ firefox
 dunst
 pipewire
 wireplumber
-gst-plugin-pipewire
 pavucontrol
 polkit-gnome
 qt6-wayland
