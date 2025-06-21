@@ -72,7 +72,7 @@ format = '[$all_status$ahead_behind ]($style)'
 symbol = ""
 style = "bg:#4890b7"
 format = '[ $symbol ($version) ]($style)'
-detect_files = ['!bunfig.toml', '!bun.lockb','!bun.lock','!index.js']
+detect_files = ['!bunfig.toml', '!bun.lockb','!bun.lock',]
 
 [bun]
 symbol= ""
