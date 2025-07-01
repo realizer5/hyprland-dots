@@ -2,10 +2,10 @@
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
     "logo": {
      "source": "$(find ~/.config/fastfetch/pngs/ -name \"*.png\" -o -name \"*.jpeg\" -o -name \"*.jpg\" | shuf -n 1)",
-	    "height": 12,
+	    "height": 11,
         "padding": {
-            "top": 2,
-            "right": 6
+            "top": 1,
+            "right": 4
         }
     },
     "display": {
@@ -13,51 +13,58 @@
     },
     "modules": [
 	"break",
-	"break",
-	{
+                 {
             "type": "title",
-            "keyWidth": 10
+            "keyWidth": 10,
+			"format": "      {6}{7}{8}"
         },
-        "break",
+        {
+            "type": "custom",
+            "format": "─────────────  ──────────────"
+        },
         {
             "type": "os",
-            "key": " ",
-            "keyColor": "13",  // = color3
+            "key": "󰣇 ",
+            "keyColor": "blue",  // = color3
         },
         {
             "type": "kernel",
-            "key": " ",
-            "keyColor": "13",
+            "key": " ",
+            "keyColor": "#50FA7B",
         },
         {
             "type": "packages",
             "format": "{} (pacman)",
             "key": " ",
-            "keyColor": "13",
+            "keyColor": "#00FFFF",
         },
         {
             "type": "shell",
             "key": " ",
-            "keyColor": "13",
+            "keyColor": "blue",
         },
         {
             "type": "terminal",
             "key": " ",
-            "keyColor": "13",
+            "keyColor": "#50FA7B",
         },
         {
             "type": "wm",
-            "key": " ",
-            "keyColor": "13",
+            "key": " ",
+            "keyColor": "#00FFFF",
         },
         {
             "type": "uptime",
-            "key": " ",
-            "keyColor": "13",
+            "key": " ",
+            "keyColor": "blue",
         },
-        "break",
-        "colors",
-        "break",
-        "break",
+                {
+            "type": "custom",
+            "format": "─────────────  ──────────────"
+        },
+         {
+            "type": "custom",
+            "format": "  \u001b[31m  \u001b[32m  \u001b[33m  \u001b[34m  \u001b[35m  \u001b[36m  \u001b[37m  \u001b[90m "
+        },
     ]
 }
