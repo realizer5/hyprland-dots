@@ -1,13 +1,10 @@
 /*****----- Configuration -----*****/
 configuration {
-	modi:                       "drun,filebrowser";
+	modi:                       "drun,emoji";
     show-icons:                 true;
     display-drun:               " ";
-    display-filebrowser:         " ";
+    display-emoji:               "󰱫 ";
 	drun-display-format:        "{name}";
-    filebrowser{
-        command:                "wl-copy";
-        }
 }
 
 /*****----- Global Properties -----*****/
