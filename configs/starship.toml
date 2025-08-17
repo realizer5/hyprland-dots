@@ -1,0 +1,86 @@
+format = """
+[](#1a1a1a)\
+$python\
+$username\
+[](bg:#2a2a2a fg:#1a1a1a)\
+$directory\
+[](fg:#2a2a2a bg:#3a3a3a)\
+$git_branch\
+$git_status\
+[](fg:#3a3a3a bg:#DC143C)\
+$c\
+$nodejs\
+$bun\
+$rust\
+[](fg:#DC143C bg:#800020)\
+$docker_context\
+[](fg:#800020 bg:#5c1a1b)\
+$time\
+[ ](fg:#5c1a1b)\
+"""
+command_timeout = 5000
+# add_newline = false
+
+[username]
+show_always = true
+style_user = "bg:#1a1a1a"
+style_root = "bg:#1a1a1a"
+format = '[ 󰭟  ]($style)'
+
+[directory]
+style = "bg:#2a2a2a"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+"Videos" = " "
+
+[c]
+symbol = " "
+style = "bg:#DC143C"
+format = '[ $symbol ($version) ]($style)'
+
+[docker_context]
+symbol = " "
+style = "bg:#800020"
+format = '[ $symbol $context ]($style) $path'
+
+[git_branch]
+symbol = ""
+style = "bg:#3a3a3a"
+format = '[ $symbol $branch ]($style)'
+
+[git_status]
+style = "bg:#3a3a3a"
+format = '[$all_status$ahead_behind ]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:#DC143C"
+format = '[ $symbol ($version) ]($style)'
+detect_files = ['!bunfig.toml', '!bun.lockb','!bun.lock',]
+
+[bun]
+symbol= ""
+style = "bg:#DC143C"
+format = '[ $symbol ($version) ]($style)'
+
+[python]
+style = "bg:#1a1a1a"
+format = '[(\($virtualenv\) )]($style)'
+
+[rust]
+symbol = ""
+style = "bg:#DC143C"
+format = '[ $symbol ($version) ]($style)'
+
+[time]
+disabled = false
+time_format = "%R"
+style = "bg:#5c1a1b"
+format = '[ $time ]($style)'

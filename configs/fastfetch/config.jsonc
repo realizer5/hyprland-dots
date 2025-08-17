@@ -1,0 +1,70 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+     "source": "$(find ~/.config/fastfetch/pngs/ -name \"*.png\" -o -name \"*.jpeg\" -o -name \"*.jpg\" | shuf -n 1)",
+	    "height": 11,
+        "padding": {
+            "top": 1,
+            "right": 4
+        }
+    },
+    "display": {
+        "separator": " "
+    },
+    "modules": [
+	"break",
+                 {
+            "type": "title",
+            "keyWidth": 10,
+			"format": "     {6}{7}{8}"
+        },
+        {
+            "type": "custom",
+            "format": "──────────── 󰭟  ─────────────"
+        },
+        {
+            "type": "os",
+            "key": "󰣇 ",
+            "keyColor": "#DC143C",  // = color3
+        },
+        {
+            "type": "kernel",
+            "key": " ",
+            "keyColor": "#DC143C",  // = color3
+        },
+        {
+            "type": "packages",
+            "format": "{} (pacman)",
+            "key": " ",
+            "keyColor": "#DC143C",  // = color3
+        },
+        {
+            "type": "shell",
+            "key": " ",
+            "keyColor": "#DC143C",  // = color3
+        },
+        {
+            "type": "terminal",
+            "key": " ",
+            "keyColor": "#DC143C",  // = color3
+        },
+        {
+            "type": "wm",
+            "key": " ",
+            "keyColor": "#DC143C",  // = color3
+        },
+        {
+            "type": "uptime",
+            "key": " ",
+            "keyColor": "#DC143C",  // = color3
+        },
+                {
+            "type": "custom",
+            "format": "──────────── 󰭟  ─────────────"
+        },
+         {
+            "type": "custom",
+            "format": "  \u001b[31m  \u001b[32m  \u001b[33m  \u001b[34m  \u001b[35m  \u001b[36m  \u001b[37m  \u001b[90m "
+        },
+    ]
+}

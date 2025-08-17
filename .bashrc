@@ -2,7 +2,7 @@
 iatest=$(expr index "$-" i)
 
 if [ -f /usr/bin/fastfetch ]; then
-	fastfetch --colors-block-range-start 9 --colors-block-width 3
+	fastfetch --colors-block-range-start 1 --colors-block-range-end 7 --colors-block-width 3
 fi
 
 if [ -f /etc/bash.bashrc ]; then
@@ -57,17 +57,21 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 #######################################################
 # GENERAL ALIAS'S
 #######################################################
-#pacman alias
+#personal alias
 alias pacin='sudo pacman -S'
 alias pacun='sudo pacman -Rns'
-alias pacup='sudo pacman -Syu'
-alias paccl='sudo pacman -Sc'
-alias pacs='pacman -Ss | grep'
+alias pacup='paru -Syu'
+alias paccl='paru -Scc'
+alias pacs='pacman -Ss'
+alias paruf="paru -Slq | fzf --multi --preview 'paru -Sii {1}' --preview-window=down:75% | xargs -ro paru -S"
 alias pacls='pacman -Q | grep'
 alias pacorph='sudo pacman -Qdtq | sudo pacman -Rns -'
+alias makepkg='makepkg -sirc'
+alias ytd='yt-dlp -S"res:1080" -f "bv+ba/b" -P $HOME/Videos/'
+
 
 #wallpaper change
-alias wall='~/.local/share/bin/chwal.sh'
+alias wall='~/.local/bin/chwal.sh'
 
 # Alias's to modified commands
 alias cp='cp -i'
@@ -80,8 +84,8 @@ alias grep='rg'
 alias ls='ls -aFh --color=always' # add colors and file type extensions
 
 # Change directory aliases
-alias home='cd ~'
 alias ..='cd ..'
+alias home='cd $HOME'
 
 
 # cd into the old directory
@@ -125,7 +129,7 @@ mkdirg() {
 }
 
 lazyg() {
-	git add .
+	git add -A
 	git commit -m "$1"
 	git push
 }
@@ -182,15 +186,29 @@ cd ()
 }
 
 #personal
-
 react(){
-    pnpm create vite "$1" --template react;
+    if [ "$#" -gt 0 ]; then
+    bun create vite "$1" --template react;
     cd "$1";
-    pnpm i;
-    pnpm i -D tailwindcss postcss autoprefixer;
-    pnpx tailwindcss init -p;
-    sed -i 's|content: \[\],|content: [\n"./index.html",\n"./src/**/*.{js,ts,jsx,tsx}",\n],|g' "./tailwind.config.js"
-    echo -e  "@tailwind base;\n@tailwind components;\n@tailwind utilities;" > "./src/index.css"
+    bun i;
+    bun add tailwindcss @tailwindcss/vite;
+    sed -i '3i import tailwindcss from "@tailwindcss/vite"' "./vite.config.js";
+    sed -i 's/plugins: \[react()\]/plugins: \[react(), tailwindcss()\]/' "./vite.config.js"
+    echo '@import "tailwindcss";' > "./src/index.css"
+    shift
+    if [ "$#" -gt 0 ]; then
+        bun add "$@";
+    fi
+    rm ./public ./src/assets ./src/App.css
+    sed -i '1,4d;7d;11,30d' ./src/App.jsx
+    else
+    echo "Please provide a Name for Project"
+    fi
+}
+
+live-server(){
+    sed -i "s|root: *\"[^\"]*\"|root: \"$(pwd)\"|" "$HOME/projects/vanila/live-server/live-server.js"
+    node "$HOME/projects/vanila/live-server/live-server.js"
 }
 
 # Check if the shell is interactive
@@ -203,4 +221,7 @@ export PATH=$PATH:"$HOME/.cargo/bin"
 
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
-. "$HOME/.cargo/env"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
