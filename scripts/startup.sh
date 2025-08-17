@@ -23,7 +23,6 @@ background_checks () {
 # starting functions
 background_checks
 
-sudo pacman -S --needed $(cat $SCRIPTS_DIR/package.lst)
 
 echo -ne "
 ----------------------------------------------------------------------------------------------
@@ -31,8 +30,8 @@ echo -ne "
 ----------------------------------------------------------------------------------------------
 "
 
-mv $CONFIGS_DIR/* ~/.config/
-mv $SCRIPTS_DIR/* ~/.local/
+cp $CONFIGS_DIR/* ~/.config/
+cp $SCRIPTS_DIR/* ~/.local/
 
 echo -ne "
 ----------------------------------------------------------------------------------------------

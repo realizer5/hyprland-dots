@@ -16,51 +16,51 @@
                  {
             "type": "title",
             "keyWidth": 10,
-			"format": "      {6}{7}{8}"
+			"format": "     {6}{7}{8}"
         },
         {
             "type": "custom",
-            "format": "─────────────  ──────────────"
+            "format": "──────────── 󰭟  ─────────────"
         },
         {
             "type": "os",
             "key": "󰣇 ",
-            "keyColor": "blue",  // = color3
+            "keyColor": "#DC143C",  // = color3
         },
         {
             "type": "kernel",
             "key": " ",
-            "keyColor": "#50FA7B",
+            "keyColor": "#DC143C",  // = color3
         },
         {
             "type": "packages",
             "format": "{} (pacman)",
             "key": " ",
-            "keyColor": "#00FFFF",
+            "keyColor": "#DC143C",  // = color3
         },
         {
             "type": "shell",
             "key": " ",
-            "keyColor": "blue",
+            "keyColor": "#DC143C",  // = color3
         },
         {
             "type": "terminal",
             "key": " ",
-            "keyColor": "#50FA7B",
+            "keyColor": "#DC143C",  // = color3
         },
         {
             "type": "wm",
             "key": " ",
-            "keyColor": "#00FFFF",
+            "keyColor": "#DC143C",  // = color3
         },
         {
             "type": "uptime",
             "key": " ",
-            "keyColor": "blue",
+            "keyColor": "#DC143C",  // = color3
         },
                 {
             "type": "custom",
-            "format": "─────────────  ──────────────"
+            "format": "──────────── 󰭟  ─────────────"
         },
          {
             "type": "custom",
