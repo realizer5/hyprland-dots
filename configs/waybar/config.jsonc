@@ -121,6 +121,8 @@
         "format-bluetooth": "{icon} {volume}%",
         "format-icons": {
             "headphone": "",
+            "hands-free": "󱡏",
+            "headset": "󱡏",
             "default": ["", "", " "]
         },
         "nospacing": 1,

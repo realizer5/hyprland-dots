@@ -2,7 +2,7 @@
 iatest=$(expr index "$-" i)
 
 if [ -f /usr/bin/fastfetch ]; then
-	fastfetch --colors-block-range-start 1 --colors-block-range-end 7 --colors-block-width 3
+	fastfetch
 fi
 
 if [ -f /etc/bash.bashrc ]; then
@@ -68,6 +68,7 @@ alias pacls='pacman -Q | grep'
 alias pacorph='sudo pacman -Qdtq | sudo pacman -Rns -'
 alias makepkg='makepkg -sirc'
 alias ytd='yt-dlp -S"res:1080" -f "bv+ba/b" -P $HOME/Videos/'
+alias realtube='$HOME/.local/bin/realtube.sh'
 
 
 #wallpaper change
@@ -85,6 +86,7 @@ alias ls='ls -aFh --color=always' # add colors and file type extensions
 
 # Change directory aliases
 alias ..='cd ..'
+alias ...='cd ../..'
 alias home='cd $HOME'
 
 
@@ -207,8 +209,8 @@ react(){
 }
 
 live-server(){
-    sed -i "s|root: *\"[^\"]*\"|root: \"$(pwd)\"|" "$HOME/projects/vanila/live-server/live-server.js"
-    node "$HOME/projects/vanila/live-server/live-server.js"
+    sed -i "s|root: *\"[^\"]*\"|root: \"$(pwd)\"|" "$HOME/projects/live-server/live-server.js"
+    node "$HOME/projects/live-server/live-server.js"
 }
 
 # Check if the shell is interactive
@@ -217,11 +219,11 @@ if [[ $- == *i* ]]; then
     bind '"\C-f":"zi\n"'
 fi
 
-export PATH=$PATH:"$HOME/.cargo/bin"
-
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+. "$HOME/.cargo/env"
+export PATH="$PATH:$HOME/go/bin"
