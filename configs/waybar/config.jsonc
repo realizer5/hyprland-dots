@@ -52,7 +52,7 @@
         "format": "{title}",
         "separate-outputs": true,
         "rewrite": {
-            "(.*) — Mozilla Firefox": "󰈹 $1",
+            "(.*) — Zen Browser": "󰈹 $1",
             "vim (.*)": " $1",
             "(.*) - Thorium": "  $1",
             "(.*) - Visual Studio Code": "󰨞  $1",
