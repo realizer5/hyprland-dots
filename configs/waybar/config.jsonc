@@ -59,7 +59,7 @@
             "nwg-look": "  GTK Settings",
             "Qt6 Configuration Tool": "  QT Settings",
             "blueman-manager": "Bluetooth Settings",
-            "([^a-z]*) Discord (.*)": "  $1 $2",
+            "• Discord (.*)": "  $1",
         }
     },
     "cpu": {
