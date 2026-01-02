@@ -52,14 +52,14 @@
         "format": "{title}",
         "separate-outputs": true,
         "rewrite": {
-            "(.*) — Mozilla Firefox": "󰈹 $1",
+            "(.*) — Zen Browser": "󰈹 $1",
             "vim (.*)": " $1",
             "(.*) - Thorium": "  $1",
             "(.*) - Visual Studio Code": "󰨞  $1",
             "nwg-look": "  GTK Settings",
             "Qt6 Configuration Tool": "  QT Settings",
             "blueman-manager": "Bluetooth Settings",
-            "([^a-z]*) Discord (.*)": "  $1 $2",
+            "• Discord (.*)": "  $1",
         }
     },
     "cpu": {
@@ -121,6 +121,8 @@
         "format-bluetooth": "{icon} {volume}%",
         "format-icons": {
             "headphone": "",
+            "hands-free": "󱡏",
+            "headset": "󱡏",
             "default": ["", "", " "]
         },
         "nospacing": 1,
