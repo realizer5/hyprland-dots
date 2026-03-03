@@ -60,19 +60,14 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 #personal alias
 alias pacin='sudo pacman -S'
 alias pacun='sudo pacman -Rns'
-alias pacup='paru -Syu'
-alias paccl='paru -Scc'
+alias pacup='yay -Syu'
+alias paccl='yay -Scc'
 alias pacs='pacman -Ss'
-alias paruf="paru -Slq | fzf --multi --preview 'paru -Sii {1}' --preview-window=down:75% | xargs -ro paru -S"
+alias yayf="yay -Slq | fzf --multi --preview 'yay -Sii {1}' --preview-window=down:75% | xargs -ro yay -S"
 alias pacls='pacman -Q | grep'
 alias pacorph='sudo pacman -Qdtq | sudo pacman -Rns -'
 alias makepkg='makepkg -sirc'
 alias ytd='yt-dlp -S"res:1080" -f "bv+ba/b" -P $HOME/Videos/'
-alias realtube='$HOME/.local/bin/realtube.sh'
-
-
-#wallpaper change
-alias wall='~/.local/bin/chwal.sh'
 
 # Alias's to modified commands
 alias cp='cp -i'
@@ -131,7 +126,7 @@ mkdirg() {
 }
 
 lazyg() {
-	git add -A
+	git add .
 	git commit -m "$1"
 	git push
 }
@@ -187,27 +182,6 @@ cd ()
 	fi
 }
 
-#personal
-react(){
-    if [ "$#" -gt 0 ]; then
-    bun create vite "$1" --template react;
-    cd "$1";
-    bun i;
-    bun add tailwindcss @tailwindcss/vite;
-    sed -i '3i import tailwindcss from "@tailwindcss/vite"' "./vite.config.js";
-    sed -i 's/plugins: \[react()\]/plugins: \[react(), tailwindcss()\]/' "./vite.config.js"
-    echo '@import "tailwindcss";' > "./src/index.css"
-    shift
-    if [ "$#" -gt 0 ]; then
-        bun add "$@";
-    fi
-    rm ./public ./src/assets ./src/App.css
-    sed -i '1,4d;7d;11,30d' ./src/App.jsx
-    else
-    echo "Please provide a Name for Project"
-    fi
-}
-
 live-server(){
     sed -i "s|root: *\"[^\"]*\"|root: \"$(pwd)\"|" "$HOME/projects/live-server/live-server.js"
     node "$HOME/projects/live-server/live-server.js"
@@ -227,3 +201,5 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 . "$HOME/.cargo/env"
 export PATH="$PATH:$HOME/go/bin"
+export PATH="$PATH:$HOME/.local/bin"
+export LIBVIRT_DEFAULT_URI="qemu:///system"
