@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+FILE_DIR="$HOME/projects/live-server/live-server.js"
+PORT=${1:-5173}
+
+sed -i "s|root: *\"[^\"]*\"|root: \"$(pwd)\"|; s|port: *[0-9]*|port: $PORT|" $FILE_DIR
+
+node $FILE_DIR

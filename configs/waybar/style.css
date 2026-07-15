@@ -103,9 +103,8 @@ button:hover {
 }
 
 #battery.full,
-#battery.good,
 #battery.charging,
-#battery.plugged {
+#battery.not-charging {
     color: #a6e3a1;
 }
 

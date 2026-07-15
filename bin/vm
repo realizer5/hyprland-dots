@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+SERVICES=(
+    libvirtd.service
+    libvirtd.socket
+    virtlogd.service
+    virtlogd.socket
+)
+
+start_services() {
+    echo "Starting libvirt services..."
+
+    for svc in "${SERVICES[@]}"; do
+        sudo systemctl start "$svc"
+    done
+
+    echo "Starting default libvirt network..."
+    virsh net-start default 2>/dev/null || true
+
+    echo "Libvirt started."
+}
+
+stop_services() {
+    echo "Stopping libvirt services..."
+
+    for svc in "${SERVICES[@]}"; do
+        sudo systemctl stop "$svc"
+    done
+
+    echo "Libvirt stopped."
+}
+
+case "${1:-start}" in
+    start)
+        start_services
+        ;;
+    stop)
+        stop_services
+        ;;
+    *)
+        echo "Usage: $0 [start|stop]"
+        exit 1
+        ;;
+esac

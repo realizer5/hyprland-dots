@@ -41,7 +41,6 @@
         "title-len": 20,
         "player-icons": {
             "default": "▶",
-            "spotify": "󰓇",
             "mpv": "",
         },
         "status-icons": {
@@ -54,12 +53,10 @@
         "rewrite": {
             "(.*) — Zen Browser": "󰈹 $1",
             "vim (.*)": " $1",
-            "(.*) - Thorium": "  $1",
-            "(.*) - Visual Studio Code": "󰨞  $1",
+            "(.*) - helium": "  $1",
             "nwg-look": "  GTK Settings",
             "Qt6 Configuration Tool": "  QT Settings",
-            "blueman-manager": "Bluetooth Settings",
-            "• Discord (.*)": "  $1",
+            "(.*) Discord (.*)": "$1   $2",
         }
     },
     "cpu": {
@@ -116,7 +113,7 @@
 
     "pulseaudio": {
         "scroll-step": 5,
-        "max-volume": 150,
+        "max-volume": 100,
         "format": "{icon} {volume}%",
         "format-bluetooth": "{icon} {volume}%",
         "format-icons": {
@@ -133,7 +130,7 @@
     },
 
     "pulseaudio#microphone":{
-        "max-volume": 150,
+        "max-volume": 100,
         "format": "{format_source}",
         "format-source": "",
         "format-source-muted": "",
@@ -147,8 +144,9 @@
 
     "battery": {
         "format": "{icon} {capacity}%",
-        "format-plugged": " {capacity}%",
-        "interval": 5,
+        "format-charging": " {capacity}%",
+        "format-not-charging": " {capacity}%",
+        "interval": 30,
         "states": {
             "warning": 20,
             "critical": 10

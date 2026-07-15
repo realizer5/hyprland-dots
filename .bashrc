@@ -9,12 +9,19 @@ if [ -f /etc/bash.bashrc ]; then
 	. /etc/bash.bashrc
 fi
 
+# Enable bash programmable completion features in interactive shells
+if [ -f /usr/share/bash-completion/bash_completion ]; then
+	. /usr/share/bash-completion/bash_completion
+elif [ -f /etc/bash_completion ]; then
+	. /etc/bash_completion
+fi
+
 #######################################################
 # EXPORTS
 #######################################################
 
 # Disable the bell
-if [[ $iatest -gt 0 ]]; then bind "set bell-style visible"; fi
+if [[ $iatest -gt 0 ]]; then bind "set bell-style none"; fi
 
 export HISTFILESIZE=10000
 export HISTSIZE=500
@@ -88,9 +95,6 @@ alias home='cd $HOME'
 # cd into the old directory
 alias bd='cd "$OLDPWD"'
 
- #Remove a directory and all files
-alias rmd='/bin/rm  --recursive --force --verbose '
-
 # Search command line history
 alias h="history | grep "
 
@@ -138,7 +142,7 @@ extract() {
 			*.tar.bz2) tar xvjf $archive ;;
 			*.tar.gz) tar xvzf $archive ;;
 			*.bz2) bunzip2 $archive ;;
-			*.rar) rar x $archive ;;
+			*.rar) unrar x $archive ;;
 			*.gz) gunzip $archive ;;
 			*.tar) tar xvf $archive ;;
 			*.tbz2) tar xvjf $archive ;;
@@ -182,11 +186,6 @@ cd ()
 	fi
 }
 
-live-server(){
-    sed -i "s|root: *\"[^\"]*\"|root: \"$(pwd)\"|" "$HOME/projects/live-server/live-server.js"
-    node "$HOME/projects/live-server/live-server.js"
-}
-
 # Check if the shell is interactive
 if [[ $- == *i* ]]; then
     # Bind Ctrl+f to insert 'zi' followed by a newline
@@ -198,8 +197,6 @@ eval "$(zoxide init bash)"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="$PATH:$HOME/go/bin:$HOME/.local/bin:$BUN_INSTALL/bin"
 . "$HOME/.cargo/env"
-export PATH="$PATH:$HOME/go/bin"
-export PATH="$PATH:$HOME/.local/bin"
 export LIBVIRT_DEFAULT_URI="qemu:///system"
